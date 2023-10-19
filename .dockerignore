@@ -1,0 +1,26 @@
+# Ignore files and directories commonly found in Node.js projects
+node_modules
+npm-debug.log
+
+# Ignore files and directories commonly found in Python projects
+__pycache__/
+*.pyc
+
+# Ignore editor and IDE files
+.vscode/
+.idea/
+
+# Ignore Docker build context files
+.dockerignore
+.docker/
+
+# Ignore miscellaneous files
+*.log
+*.swp
+
+# ignore docker file
+Dockerfile
+
+# ignore book folders that will get mounted in docker as volumes
+bookfonts/
+bookimages/

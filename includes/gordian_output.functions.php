@@ -1041,11 +1041,27 @@
 
         $format = (strstr($_SESSION['gb']['settings']['page_size'],',')) ? explode(',',$_SESSION['gb']['settings']['page_size']) : $_SESSION['gb']['settings']['page_size'];
 
+        $bookfont_dir = $root . '/bookfonts';
+        // read all the .ttf files from the bookfonts directory
+        $bookfonts = array_filter(scandir($bookfont_dir),function($f) { return substr($f,-4) == '.ttf'; });
+        // loop through each font and add it to the fontdata array
+        foreach ($bookfonts AS $font) {
+            $fontname = substr($font,0,-4);
+            //lowercase the font name
+            $fontname = strtolower($fontname);
+            $fontData[$fontname] = [
+                'R' => $font,         
+            ];
+        }
+
+        //print("<pre>"); print_r($fontData); print("</pre>");
+
         $config = [
             'curlExecutionTimeout' => 3,
             'format' => $format,
             'fontDir' => array_merge($fontDirs, [
                 $root . '/fonts',
+                $root . '/bookfonts',
             ]),
             'fontdata' => $fontData + [
                 'fell' => [
@@ -1057,7 +1073,10 @@
                 ],
                 'forum' => [
                     'R' => 'Forum-Regular.ttf',
-                ]
+                ],
+                //'inkfree' => [
+                //    'R' => 'Inkfree.ttf',
+                //]
             ],
             'dpi'                => $_SESSION['gb']['settings']['low_res'] ? 72 : $_SESSION['gb']['settings']['resolution'],
             'img_dpi'            => $_SESSION['gb']['settings']['low_res'] ? 72 : $_SESSION['gb']['settings']['image_resolution'],
