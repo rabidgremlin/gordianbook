@@ -86,6 +86,7 @@
                     <label for='cover'>Footers</label>
                     <input name='footers' type='radio' value='numbers' ".($_SESSION['gb']['settings']['footers'] == 'numbers' ?'CHECKED':'')."> Numbers
                     <input name='footers' type='radio' value='dice'    ".($_SESSION['gb']['settings']['footers'] == 'dice'    ?'CHECKED':'')."> Dice
+                    <input name='footers' type='radio' value='noparagraph'    ".($_SESSION['gb']['settings']['footers'] == 'noparagraph'    ?'CHECKED':'')."> Nothing on Paragraph Pages
                 </div>
             </div>
             <div class='form-row'>

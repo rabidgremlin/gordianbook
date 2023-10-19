@@ -142,6 +142,15 @@
                         </htmlpagefooter>";
                         $rf   = "<sethtmlpagefooter name='{$number}_footer' page='ALL' value='on'></sethtmlpagefooter>";
                     }
+
+                    // supress page numbers on paragraph pages
+                    if ($_SESSION['gb']['settings']['footers'] == 'noparagraph' && !$settings['playable']) {                    
+                        $out .= "
+                        <htmlpagefooter name=\"{$number}_footer\" style=\"display:none\">
+                            <div class='footer'>&nbsp;</div>
+                        </htmlpagefooter>";
+                        $rf   = "<sethtmlpagefooter name='{$number}_footer' page='ALL' value='on'></sethtmlpagefooter>";
+                    }
                     
                     $out .= "
                             {$pp['before']}
